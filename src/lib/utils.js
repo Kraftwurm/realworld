@@ -8,3 +8,13 @@ export function post(endpoint, data) {
 		}
 	}).then((r) => r.json());
 }
+
+function bytes2hex(bytes) {
+	return Array.prototype.map.call(bytes,
+		byte => ('0' + byte.toString(16)).slice(-2)).join('');
+}
+
+export function bufferFromCF(value) {
+	let bytes = new TextEncoder().encode(value)
+	return bytes2hex(bytes)
+}

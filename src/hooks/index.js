@@ -1,5 +1,4 @@
 import * as cookie from 'cookie';
-import bufferFromCF from '$lib/utils';
 
 export async function handle({ event, resolve }) {
 	const cookies = cookie.parse(event.request.headers.get('cookie') || '');
@@ -20,4 +19,14 @@ export function getSession({ locals }) {
 			bio: locals.user.bio
 		}
 	};
+}
+
+function bytes2hex(bytes) {
+	return Array.prototype.map.call(bytes,
+		byte => ('0' + byte.toString(16)).slice(-2)).join('');
+}
+
+function bufferFromCF(value) {
+	let bytes = new TextEncoder().encode(value)
+	return bytes2hex(bytes)
 }

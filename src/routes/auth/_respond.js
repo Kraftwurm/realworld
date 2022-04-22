@@ -1,4 +1,4 @@
-import { bufferFromCF } from '$lib/utils'
+import bufferFromCF from '$lib/utils'
 
 export function respond(body) {
 	if (body.errors) {

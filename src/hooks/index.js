@@ -1,5 +1,5 @@
 import * as cookie from 'cookie';
-import { bufferFromCF } from '$lib/utils';
+import bufferFromCF from '$lib/utils';
 
 export async function handle({ event, resolve }) {
 	const cookies = cookie.parse(event.request.headers.get('cookie') || '');
